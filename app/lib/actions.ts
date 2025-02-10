@@ -6,10 +6,10 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
-type Revenue = {
-  month: string;
-  revenue: number;
-};
+// type Revenue = {
+//   month: string;
+//   revenue: number;
+// };
 const FormSchema = z.object({
   id: z.string(),
   customerId: z.string({
@@ -57,6 +57,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     `;
   } catch (error) {
     // If a database error occurs, return a more specific error.
+    console.log(error);
     return {
       message: "Database Error: Failed to Create Invoice.",
     };
